@@ -1,0 +1,47 @@
+spring:
+    application:
+        name: order-service
+    profiles:
+        active: dev
+    cloud:
+        config:
+            uri: http://localhost:8071
+
+resilience4j:
+    circuitbreaker:
+        instances:
+            orderService:
+                registerHealthIndicator: true
+                slidingWindowSize: 10
+                minimumNumberOfCalls: 5
+                permittedNumberOfCallsInHalfOpenState: 3
+                automaticTransitionFromOpenToHalfOpenEnabled: true
+                waitDurationInOpenState: 10s
+                failureRateThreshold: 50
+                recordExceptions:
+                    - org.springframework.web.client.HttpServerErrorException
+                    - java.io.IOException
+                    - java.util.concurrent.TimeoutException
+                    - org.springframework.web.client.ResourceAccessException
+            bookService:
+                registerHealthIndicator: true
+                slidingWindowSize: 10
+                minimumNumberOfCalls: 5
+                permittedNumberOfCallsInHalfOpenState: 3
+                automaticTransitionFromOpenToHalfOpenEnabled: true
+                waitDurationInOpenState: 10s
+                failureRateThreshold: 50
+                recordExceptions:
+                    - org.springframework.web.client.HttpServerErrorException
+                    - java.io.IOException
+                    - java.util.concurrent.TimeoutException
+                    - org.springframework.web.client.ResourceAccessException
+
+    retry:
+        instances:
+          retryOrderService:
+              max-attempts: 3
+              wait-duration:
+                seconds: 0.5
+              retry-exceptions:
+                - java.util.concurrent.TimeoutException

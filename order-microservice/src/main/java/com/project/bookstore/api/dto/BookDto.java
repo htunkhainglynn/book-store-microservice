@@ -1,10 +1,10 @@
 package com.project.bookstore.api.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,4 +46,5 @@ public class BookDto {
     @NotNull(message = "Genre is required")
     private List<String> genres = new ArrayList<>();
 }
+
 

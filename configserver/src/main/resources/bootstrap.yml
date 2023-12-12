@@ -5,11 +5,10 @@ spring:
         active: native
 
     cloud:
-      config:
-          server:
-              bootstrap: true
-              native:
-                  search-locations: file://classpath:/config
+        config:
+            server:
+                native:
+                    search-locations: classpath:/config
 
 server:
     port: 8071

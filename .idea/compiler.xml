@@ -7,6 +7,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="gatewayserver" />
         <module name="configserver" />
         <module name="order-microservice" />
         <module name="book-microservice" />
@@ -19,6 +20,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="book-microservice" options="-parameters" />
       <module name="configserver" options="-parameters" />
+      <module name="gatewayserver" options="-parameters" />
       <module name="order-microservice" options="-parameters" />
       <module name="service-discovery" options="-parameters" />
       <module name="user-microservice" options="-parameters" />
